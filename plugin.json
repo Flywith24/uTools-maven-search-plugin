@@ -1,0 +1,25 @@
+{
+	"pluginName": "maven-search",
+	"description": "gradle依赖查询",
+	"version": "0.0.1",
+	"author": "fly_with24",
+	"homepage": "https://yangyunzhao.com",
+	"preload": "preload.js",
+	"logo": "logo.png",
+	"features": [
+		{
+			"code": "maven-search",
+			"explain": "maven search",
+			"cmds": [
+				"maven"
+			]
+		},
+		{
+			"code": "google-maven",
+			"explain": "google maven search",
+			"cmds": [
+				"google"
+			]
+		}
+	]
+}
