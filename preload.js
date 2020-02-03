@@ -147,25 +147,31 @@ var onGoogleSearch = function () {
     })
 }
 
+var timeoutId = 0;
+
 /**
  * maven search
  * @param {string} searchWord 查询关键词
  * @param {[]} callbackSetList 
  */
 var onMavenSearch = function (searchWord, callbackSetList) {
-    ajax({
-        url: MAVEN_BASE_URL + searchWord,
-        success: function (data) {
-            const items = JSON.parse(data).response.docs.map(item => {
-                return {
-                    title: `${item.g}:${item.a}:${item.latestVersion}`,
-                    description: `updated at ${moment(item.timestamp).format('YYYY-MM-DD HH:mm:ss')}`
-                }
-            })
-            console.log(items);
-            callbackSetList(items)
-        }
-    })
+    clearTimeout(timeoutId)
+    //延迟搜索
+    timeoutId = setTimeout(function () {
+        ajax({
+            url: MAVEN_BASE_URL + searchWord,
+            success: function (data) {
+                const items = JSON.parse(data).response.docs.map(item => {
+                    return {
+                        title: `${item.g}:${item.a}:${item.latestVersion}`,
+                        description: `updated at ${moment(item.timestamp).format('YYYY-MM-DD HH:mm:ss')}`
+                    }
+                })
+                console.log(items);
+                callbackSetList(items)
+            }
+        })
+    }, 350);
 };
 
 /**

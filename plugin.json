@@ -9,7 +9,7 @@
 	"features": [
 		{
 			"code": "maven-search",
-			"explain": "maven search",
+			"explain": "maven center search",
 			"cmds": [
 				"maven"
 			]
