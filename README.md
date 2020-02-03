@@ -9,6 +9,10 @@
 `maven` 命令对应 `maven center repository`
 `gogole` 命令对应 `google maven repository`
 
+
+### 演示
+![](./demo.gif)
+
 ### todo
 
 - `jitpack repository` 查询
