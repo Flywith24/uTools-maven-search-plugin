@@ -5,6 +5,8 @@ const MAVEN_BASE_URL = "http://search.maven.org/solrsearch/select?q="
 
 const GOOGLE_MAVEN_BASE_URL = "https://dl.google.com/dl/android/maven2/"
 
+const ALI_MAVEN_BASE_URL = "https://maven.aliyun.com/artifact/aliyunMaven/searchArtifactByWords?_input_charset=utf-8&repoId=jcenter&queryTerm="
+
 var googleMavenCache = []
 
 /**
@@ -123,7 +125,8 @@ var loadGroup = function loadGroup(groupId) {
                     groupArtifacts[artifactId]['_versions'].split(',');
                 // console.log(groupId + ":" + artifactId + ":" + versions.pop());
                 googleMavenCache.push({
-                    title: groupId + ":" + artifactId + ":" + versions.pop()
+                    title: groupId + ":" + artifactId + ":" + versions.pop(),
+                    icon: './logo.png'
                 })
             }
         }
@@ -164,7 +167,8 @@ var onMavenSearch = function (searchWord, callbackSetList) {
                 const items = JSON.parse(data).response.docs.map(item => {
                     return {
                         title: `${item.g}:${item.a}:${item.latestVersion}`,
-                        description: `updated at ${moment(item.timestamp).format('YYYY-MM-DD HH:mm:ss')}`
+                        description: `updated at ${moment(item.timestamp).format('YYYY-MM-DD HH:mm:ss')}`,
+                        icon: './logo.png'
                     }
                 })
                 console.log(items);
@@ -232,6 +236,39 @@ window.exports = {
             // 子输入框为空时的占位符，默认为字符串"搜索"
             placeholder: "搜索（搜索结果点击可复制到剪贴板）"
         }
+    },
+    "jcenter": {
+        mode: "list",  // 列表模式
+        args: {
+            // 子输入框内容变化时被调用 可选 (未设置则无搜索)
+            search: (action, searchWord, callbackSetList) => {
+                // 获取一些数据
+                // 执行 callbackSetList 显示出来
+                if (!searchWord) return callbackSetList()
+                searchWord = searchWord.toLowerCase()
+                ajax({
+                    url: ALI_MAVEN_BASE_URL + searchWord,
+                    success: function (data) {
+                        const items = JSON.parse(data).object.filter(item => {
+                            return item.packaging === 'jar';
+                        }).slice(0, 20).map(item => {
+                            var groupId = item.groupId.replace(/[^a-zA-Z.]/ig, "");
+                            return {
+                                title: `${groupId}:${item.artifactId}:${item.version}`,
+                                icon: './logo.png'
+                            }
+                        })
+                        console.log(items);
+                        return callbackSetList(items)
+                    }
+                })
+            },
+            // 用户选择列表中某个条目时被调用
+            select: (action, itemData, callbackSetList) => {
+                copyResult(itemData)
+            },
+            // 子输入框为空时的占位符，默认为字符串"搜索"
+            placeholder: "搜索（搜索结果点击可复制到剪贴板）"
+        }
     }
-
 }

@@ -1,12 +1,19 @@
 {
 	"pluginName": "maven-search",
 	"description": "gradle依赖查询",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"author": "fly_with24",
 	"homepage": "https://yangyunzhao.com",
 	"preload": "preload.js",
 	"logo": "logo.png",
 	"features": [
+		{
+			"code": "jcenter",
+			"explain": "jcenter search;阿里jecenter镜像搜索",
+			"cmds": [
+				"jcenter"
+			]
+		},
 		{
 			"code": "maven-search",
 			"explain": "maven center search",
