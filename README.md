@@ -4,10 +4,17 @@
 
 ### gradle依赖查询工具
 
-本插件提供 `maven center repository` 和 `google maven repository`最新版本依赖查询
+本插件提供
 
-输入 `maven` 或 `google` 唤出 输入关键词搜索并选中结果粘贴到剪切板
+ `maven center` 
+ `google`
+ `jcenter`
 
+依赖查询
+
+输入 `jcenter` / `maven` / `google` 唤出 输入关键词搜索并选中结果粘贴到剪切板
+
+`jcenter` 命令对应 `jcenter repository`
 `maven` 命令对应 `maven center repository`
 `gogole` 命令对应 `google maven repository`
 
