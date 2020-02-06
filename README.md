@@ -20,7 +20,6 @@
 
 
 ### 演示
-![](./demo.gif)
 
 [视频演示](https://www.bilibili.com/video/av86491319/?p=2)
 
