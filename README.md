@@ -12,12 +12,12 @@
 
 依赖查询
 
-输入 `jcenter` / `maven` / `google` 唤出 输入关键词搜索并选中结果粘贴到剪切板
+输入 `jcenter` / `maven` / `google` / `mvn` 唤出 输入关键词搜索并选中结果粘贴到剪切板
 
 `jcenter` 命令对应 `jcenter repository`
 `maven` 命令对应 `maven center repository`
 `gogole` 命令对应 `google maven repository`
-
+`mvn` 命令对应 `maven center repository` 并会复制出maven格式的结果
 
 ### 演示
 ![](./demo.gif)
