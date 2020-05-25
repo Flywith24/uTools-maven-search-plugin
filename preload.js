@@ -187,6 +187,23 @@ var copyResult = function (itemData) {
     const result = "implementation \"" + itemData.title + "\""
     clipboard.writeText(result, 'selection')
     window.utools.outPlugin()
+
+}
+var copyMavenResult = function (itemData) {
+    window.utools.hideMainWindow()
+    
+    console.log(itemData);
+    const args = itemData.title.split(":")
+    const x = {
+        g:args[0],
+        a:args[1],
+        v:args[2],
+    };
+    console.log(x);
+    const result = `<dependency>\n  <groupId>${x.g}</groupId>\n  <artifactId>${x.a}</artifactId>\n  <version>${x.v}</version>\n</dependency>`;
+    console.log(result);
+    clipboard.writeText(result, 'selection')
+    window.utools.outPlugin()
 }
 
 // 在window上添加一个名称为“exports”的对象，用于描述插件的模版模式及设置回调
@@ -209,6 +226,28 @@ window.exports = {
             // 用户选择列表中某个条目时被调用
             select: (action, itemData, callbackSetList) => {
                 copyResult(itemData)
+            },
+            // 子输入框为空时的占位符，默认为字符串"搜索"
+            placeholder: "搜索（搜索结果点击可复制到剪贴板）"
+        }
+    },
+    "mvn-search": { // maven search
+        mode: "list",  // 列表模式
+        args: {
+            /*//进入插件时调用（可选）
+            enter: (action, callbackSetList) => {
+                // 如果进入插件就要显示列表数据
+                onMavenSearch(action, "okhttp", callbackSetList)
+            }, */
+            // 子输入框内容变化时被调用 可选 (未设置则无搜索)
+            search: (action, searchWord, callbackSetList) => {
+                // 获取一些数据
+                // 执行 callbackSetList 显示出来
+                onMavenSearch(searchWord, callbackSetList)
+            },
+            // 用户选择列表中某个条目时被调用
+            select: (action, itemData, callbackSetList) => {
+                copyMavenResult(itemData)
             },
             // 子输入框为空时的占位符，默认为字符串"搜索"
             placeholder: "搜索（搜索结果点击可复制到剪贴板）"
