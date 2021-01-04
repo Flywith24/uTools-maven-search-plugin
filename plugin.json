@@ -16,7 +16,7 @@
 		},
 		{
 			"code": "maven-search",
-			"explain": "maven center search",
+			"explain": "maven center search（Maven格式）",
 			"cmds": [
 				"maven"
 			]
@@ -29,10 +29,10 @@
 			]
 		},
 		{
-			"code": "mvn-search",
-			"explain": "Maven格式：maven search",
+			"code": "gradle-search",
+			"explain": "maven center search（Gradle格式）",
 			"cmds": [
-				"mvn"
+				"gradle"
 			]
 		}
 	]
