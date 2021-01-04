@@ -16,11 +16,11 @@
 
 `jcenter` 命令对应 `jcenter repository`
 
-`maven` 命令对应 `maven center repository` 并会复制出 gradle 格式的结果
+`gradle` 命令对应 `maven center repository` 并会复制出 gradle 格式的结果
 
 `gogole` 命令对应 `google maven repository`
 
-`gradle` 命令对应 `maven center repository` 并会复制出 maven 格式的结果
+`maven` 命令对应 `maven center repository` 并会复制出 maven 格式的结果
 
 ### 演示
 ![](./demo.gif)
