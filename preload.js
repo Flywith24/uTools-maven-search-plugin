@@ -209,7 +209,7 @@ var copyMavenResult = function (itemData) {
 // 在window上添加一个名称为“exports”的对象，用于描述插件的模版模式及设置回调
 // 列表模式
 window.exports = {
-    "maven-search": { // maven search
+    "gradle-search": { // maven search -复制结果为 gradle 格式
         mode: "list",  // 列表模式
         args: {
             /*//进入插件时调用（可选）
@@ -231,7 +231,7 @@ window.exports = {
             placeholder: "搜索（搜索结果点击可复制到剪贴板）"
         }
     },
-    "mvn-search": { // maven search
+    "maven-search": { // maven search -复制结果为 maven 格式
         mode: "list",  // 列表模式
         args: {
             /*//进入插件时调用（可选）
